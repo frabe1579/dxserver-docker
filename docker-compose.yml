@@ -11,9 +11,6 @@ services:
       - "8024:6379"
   dxserver:
     image: totalprogrammi/dxserver
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "8023:8023"
     volumes:
