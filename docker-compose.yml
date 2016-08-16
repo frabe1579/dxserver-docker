@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  firebird:
+    image: jacobalberty/firebird:2.5-sc
+    volumes:
+      - "/data/db:/databases"
+  redis:
+    image: redis
+    ports:
+      - "8024:6379"
+  dxserver:
+    image: totalprogrammi/dxserver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8023:8023"
+    volumes:
+      - "./appsettings.Production.json:/app/appsettings.Production.json"
+      - "/data/config:/data/config"
+      - "/data/files:/data/files"
