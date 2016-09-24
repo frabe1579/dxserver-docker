@@ -2,9 +2,10 @@ version: '2'
 
 services:
   firebird:
-    image: jacobalberty/firebird:2.5-sc
+    image: almeida/firebird:2.5
     volumes:
-      - "/data/db:/databases"
+      - "/data/db:/var/lib/firebird/2.5/data"
+      - "/data/backup:/backup"
   redis:
     image: redis
     ports:
@@ -17,3 +18,4 @@ services:
       - "./appsettings.Production.json:/app/appsettings.Production.json"
       - "/data/config:/data/config"
       - "/data/files:/data/files"
+      - "/data/backup:/data/backup"
