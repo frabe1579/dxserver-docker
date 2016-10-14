@@ -4,17 +4,21 @@ services:
   firebird:
     image: almeida/firebird:2.5
     volumes:
+      - "/etc/localtime:/etc/localtime"
       - "/data/db:/var/lib/firebird/2.5/data"
       - "/data/backup:/backup"
   redis:
     image: redis
     ports:
       - "8024:6379"
+    volumes:
+      - "/etc/localtime:/etc/localtime"
   dxserver:
     image: totalprogrammi/dxserver
     ports:
       - "8023:8023"
     volumes:
+      - "/etc/localtime:/etc/localtime"
       - "./appsettings.Production.json:/app/appsettings.Production.json"
       - "/data/config:/data/config"
       - "/data/files:/data/files"
